@@ -1,6 +1,18 @@
 {
   "name": "cv-generator",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Privacy-friendly CV builder with live preview, colour themes, dark mode and real PDF export. Runs entirely in the browser.",
+  "keywords": [
+    "cv",
+    "resume",
+    "cv-generator",
+    "resume-builder",
+    "pdf",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss"
+  ],
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,6 +21,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^4.9.0",
     "next": "16.4.0",
     "react": "19.3.0",
     "react-dom": "19.3.0"

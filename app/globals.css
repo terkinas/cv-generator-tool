@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
+/* Dark mode is toggled by a `dark` class on <html> (see ThemeToggle). */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --background: #f4f5f8;
+  --foreground: #0f172a;
+  --surface: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+ * Dark mode re-maps the slate scale instead of repeating `dark:` on every
+ * class: text-slate-900 becomes near-white, border-slate-200 becomes a dark
+ * border, and so on. Cards, inputs and dialogs use bg-surface (not bg-white).
+ */
+.dark {
+  color-scheme: dark;
+  --background: #0b1120;
+  --foreground: #f1f5f9;
+  --surface: #131c2e;
+
+  --color-slate-50: #1a2438;
+  --color-slate-100: #1e293b;
+  --color-slate-200: #2b3850;
+  --color-slate-300: #3d4c66;
+  --color-slate-400: #64748b;
+  --color-slate-500: #94a3b8;
+  --color-slate-600: #b4c0d1;
+  --color-slate-700: #cbd5e1;
+  --color-slate-800: #e2e8f0;
+  --color-slate-900: #f1f5f9;
+  --color-slate-950: #f8fafc;
+}
+
+/*
+ * The CV "paper" mirrors the PDF, which is always light, so it keeps the
+ * normal light palette even when the page around it is dark.
+ */
+.cv-paper {
+  color-scheme: light;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
